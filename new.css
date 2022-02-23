@@ -1,0 +1,163 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* css variables */
+:root {
+  --cell-size: 10vw;
+}
+
+.board {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-template-rows: repeat(3, var(--cell-size));
+  justify-content: center;
+  align-content: center;
+}
+
+.cell {
+  border: 5px solid rgb(255, 255, 255);
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+
+
+/* 1. to make cross */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: calc(var(--cell-size) * 0.9);
+  background-color: red;
+  width: calc(var(--cell-size) * 0.15);
+  height: calc(var(--cell-size) * 0.9);
+}
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* to give the color to cell on hover */
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  background-color: rgb(112, 112, 112);
+}
+
+
+
+
+/*2. to make circle */
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: calc(var(--cell-size) * 0.9);
+}
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before {
+  background-color: red;
+  width: calc(var(--cell-size) * 0.9);
+  height: calc(var(--cell-size) * 0.9);
+}
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+  background-color: rgb(0, 0, 0);
+  width: calc(var(--cell-size) * 0.6);
+  height: calc(var(--cell-size) * 0.6);
+}
+/* to give the color to cell on hover */
+.board.o .cell:not(.x):not(.o):hover::before
+{
+  background-color: rgb(112, 112, 112);
+}
+.board.o .cell:not(.x):not(.o):hover::after
+{
+  background-color: rgb(0, 0, 0);
+}
+
+
+/* info div */
+.infoDiv{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.678);
+   font-weight: 500;
+    color:rgb(255, 255, 255);
+  font-size: calc(var(--cell-size)*.40);
+  text-transform: capitalize;
+}
+
+#reset{
+    font-size: calc(var(--cell-size)*.30);
+    padding: calc(var(--cell-size)*0.05);
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#reset:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+/* utility classes */
+.bt {
+  border-top: 0;
+}
+
+.bl {
+  border-left: 0;
+}
+
+.bb {
+  border-bottom: 0;
+}
+
+.br {
+  border-right: 0;
+}
