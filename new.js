@@ -7,9 +7,9 @@ let win=true;
 let infoDiv = document.querySelector('.infoDiv');
 let Text = document.querySelector('[data-winning-message-text]');
 
-let music = new Audio('./audio/music.mp3');
-let turnAudio = new Audio('./audio/ting.mp3');
-let gameoverAudio = new Audio('./audio/gameover.mp3');
+let music = new Audio('.music.mp3');
+let turnAudio = new Audio('.ting.mp3');
+let gameoverAudio = new Audio('.gameover.mp3');
 
 // winning Combinations
 let combinations = [
